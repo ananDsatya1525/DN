@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Address</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Enter Your Address</h2>
+    <form id="addressForm">
+        <div class="form-group">
+            <label for="houseNumber">House Number:</label>
+            <input type="text" id="houseNumber" name="houseNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street" required>
+        </div>
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+        </div>
+        <div class="form-group">
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <button type="submit" class="submit-btn">Place Order</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script type="text/javascript">
+    (function(){
+        emailjs.init({
+            publicKey: "i-Ns5sCDP78_EwXBR",
+        });
+    })();
+
+    const products = [
+        { name: "Apple", quantity: 2, price: 50, total_price: 100 },
+        { name: "Banana", quantity: 1, price: 30, total_price: 30 }
+    ];
+    const totalPrice = products.reduce((sum, product) => sum + product.total_price, 0);
+
+    document.getElementById('addressForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const address = {
+            houseNumber: document.getElementById('houseNumber').value,
+            street: document.getElementById('street').value,
+            city: document.getElementById('city').value,
+            state: document.getElementById('state').value,
+        };
+
+        const userEmail = document.getElementById('email').value;
+
+        // Create Razorpay order
+        fetch('http://localhost:3000/create-order', {  // Update URL if hosted on a server
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                amount: totalPrice * 100, // Amount in paise
+                currency: 'INR'
+            })
+        })
+        .then(response => response.json())
+        .then(orderData => {
+            var options = {
+                key: "YOUR_RAZORPAY_KEY", // Enter the Key ID generated from the Dashboard
+                amount: orderData.amount,
+                currency: "INR",
+                name: "Your Company Name",
+                description: "Order Payment",
+                order_id: orderData.id,
+                handler: function (response) {
+                    // Handle successful payment
+                    const templateParamsUser = {
+                        to_name: "Customer",
+                        to_email: userEmail,
+                        products: products.map(p => `<div>${p.name} | Quantity: ${p.quantity} | Price: ₹${p.price}</div>`).join(""),
+                        total_price: totalPrice,
+                        user_address: `${address.houseNumber}, ${address.street}, ${address.city}, ${address.state}`,
+                        year: new Date().getFullYear(),
+                    };
+
+                    const templateParamsAdmin = {
+                        to_name: "UserName",
+                        to_email: userEmail,
+                        products: products.map(p => `<div>${p.name} | Quantity: ${p.quantity} | Price: ₹${p.price}</div>`).join(""),
+                        total_price: totalPrice,
+                        user_address: `${address.houseNumber}, ${address.street}, ${address.city}, ${address.state}`,
+                        customer_email: userEmail,
+                        year: new Date().getFullYear(),
+                    };
+
+                    emailjs.send('service_xyvqbe6', 'template_gth9yxp', templateParamsUser)
+                        .then(response => {
+                            console.log('Order confirmation email sent to user!', response.status, response.text);
+                        }, error => {
+                            console.log('Failed to send email to user...', error);
+                        });
+
+                    emailjs.send('service_xyvqbe6', 'template_yo68oge', templateParamsAdmin)
+                        .then(response => {
+                            console.log('Order details sent to admin!', response.status, response.text);
+                        }, error => {
+                            console.log('Failed to send email to admin...', error);
+                        });
+                },
+                prefill: {
+                    name: "Customer",
+                    email: userEmail,
+                },
+                theme: {
+                    color: "#28a745"
+                }
+            };
+
+            var paymentObject = new Razorpay(options);
+            paymentObject.open();
+        })
+        .catch(error => {
+            console.error('Error creating Razorpay order:', error);
+        });
+    });
+</script>
+</body>
+</html>

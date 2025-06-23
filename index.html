@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Store</title>
+    <link rel="icon" type="image/png" href="/dayneedsLogobyDesigner.png" sizes="32x32"> <!-- Replace with your favicon path -->
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Protest+Guerrilla&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Protest+Guerrilla&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Protest+Guerrilla&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="brand" style="display: flex;flex-direction: row;justify-content: center;align-items: center; background-color: #218838;padding-left: 30px;padding-right: 30px;border-top-right-radius: 50px;border-bottom-right-radius: 50px;">
+            <img src="/images/bannerslides/icon2.png" alt="" srcset="" style="width: 70px;height: 70px;">
+        <h1>Dayneeds</h1>
+
+        </div>
+      <div class="searchBar">
+        <input type="text" id="search" placeholder="Search products...">
+        <span class="material-symbols-outlined">
+            search
+            </span>
+      </div>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/mainApplication/Productspages/p1.html">Products</a></li>
+                <li><a href="/mainApplication/CartPages/cart.html">Cart</a></li>
+                <li><a href="/mainApplication/ProfilePage/profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Carousel for desktops -->
+    <div class="carousel-container">
+        <div class="carousel">
+            <div class="card">
+                <img src="/images/carasoul/carasoul1.jpg" alt="" srcset="">
+            </div>
+            <div class="card">
+                <img src="/images/carasoul/carasoul4.jpg" alt="" srcset="">
+            </div>
+            <div class="card">
+                <img src="/images/carasoul/carasoul2.png" alt="" srcset="">
+            </div>
+            <div class="card">
+                <img src="/images/carasoul/carasoul3.png" alt="" srcset="">
+            </div>
+            <div class="card">
+                <img src="/images/carasoul/carasoul5.jpg" alt="" srcset="">
+            </div>
+            <div class="card">
+                <img src="/images/carasoul/carasoul3.png" alt="" srcset="">
+            </div>
+            <div class="card">
+                <img src="/images/carasoul/carasoul5.jpg" alt="" srcset="">
+            </div>
+            <div class="card">
+                <img src="/images/carasoul/carasoul3.png" alt="" srcset="">
+            </div>
+            <div class="card">
+                <img src="/images/carasoul/carasoul5.jpg" alt="" srcset="">
+            </div>
+        </div>
+    </div>
+   <!-- slide show for mobiles -->
+   <div class="slideshow-container">
+    <div class="slideshow">
+        <div class="slide" style="background-image: url(/images/slides/slide1.jpg);">
+            <div class="matterOnimage">
+              
+                <h2>Organic Vegetables</h2>
+                <p>From farm to table, naturally grown.</p>
+                <button type="button">Shop Vegetables</button>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url(/images/slides/slide6.jpeg);">
+            <div class="matterOnimage">
+               
+                <h2>Fresh Fruits</h2>
+                <p>Handpicked and delivered to your doorstep.</p>
+                <button type="button">Shop Fruits</button>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url(/images/slides/caroot.jpeg);">
+            <div class="matterOnimage">
+                <h2>Organic Vegetables</h2>
+                <p>From farm to table, naturally grown.</p>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url(/images/slides/slide2.jpg);">
+            <div class="matterOnimage">
+              
+                <h2>Healthy Living</h2>
+                <p>Nourish your body with the best choices.</p>
+                <button type="button">Healthy Products</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="assurance">
+   <div class="left">
+    <span class="material-symbols-outlined">
+        eco
+        </span>
+        <h4>Freshness Guarentee</h4>
+        <p>From Form to Fork</p>
+   </div>
+   <div class="right">
+    <span class="material-symbols-outlined">
+        local_shipping
+        </span>
+        <h4>To your Door step</h4>
+        <p>instant delivery</p>
+   </div>
+</div>
+    <marquee behavior="" direction="" id="ScrollingText">తాజాదనం హామీ , మీ ఇంటి గుమ్మానికి , తక్షణ డెలివరీ
+    </marquee>
+    <main id="main">
+        <h2 style="  font-family: Ubuntu, sans-serif;
+        font-weight: 400;
+        font-style: normal;">Products</h2>
+        <div class="filters">
+            <label for="category">Category:</label>
+            <select id="category">
+                <option value="all">All</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="fruits">Fruits</option>
+                <option value="groceries">Groceries</option>
+            </select>
+            <input type="text" id="search2" placeholder="Search products...">
+        </div>
+        <marquee id="scrollingtext">Limited Time: Price Drops on Select Items! Shop Now and Save! 👇 </marquee>
+        <div class="product-list">
+          
+            <!-- Product items will be inserted here dynamically -->
+            
+        </div>
+        <div class="no-products" style="display: none;">Oops! The product is not available.</div>
+
+    </main>
+    <div class="bottom-container">
+        <div class="welcomemsg">
+            <h1>Welcome to DAYNEEDS!</h1>
+                <p>We're glad to have you here. Explore our fresh fruits, organic vegetables, daily groceries, quality meat, and more!</p>
+                <p>DAYNEEDSకి స్వాగతం!
+                    మీరు ఇక్కడ ఉన్నందుకు మేము సంతోషిస్తున్నాము. మా తాజా పండ్లు, సేంద్రీయ కూరగాయలు, రోజువారీ కిరాణా సామాగ్రి, నాణ్యమైన మాంసం మరియు మరిన్నింటిని అన్వేషించండి!</p>
+        </div>
+    </div>
+    
+   <div class="cards-container">
+    <div class="cards" style="background-image: url(/images/cards/card3.jpg);">
+        <div class="card-content">
+            <h2 class="card-title">Fruits/పండ్లు</h2>
+            <a href="#" class="card-btn">SHOP NOW</a>
+        </div>
+        </div>
+        <div class="cards" style="background-image: url(/images/cards/card1.jpg);">
+            <div class="card-content">
+                <h2 class="card-title">Vegetables/కూరగాయలు</h2>
+                <a href="#" class="card-btn">SHOP NOW</a>
+            </div>
+            </div>
+            <div class="cards" style="background-image: url(/images/cards/card6.jpg);">
+                <div class="card-content">
+                    <h2 class="card-title">Grocery/కిరాణా</h2>
+                    <a href="#" class="card-btn">SHOP NOW</a>
+                </div>
+                </div>
+   </div>
+<!-- Subscription model -->
+    <div class="subscribe-banner" id="subscribe-banner">
+        <div class="subscribe-content">
+            <span class="close-btn" id="close-banner">&times;</span>
+            <h2>Subscribe Now for Just 200 Rs/Month</h2>
+            <p>Get exclusive offers, free deliveries, and more benefits!</p>
+            <ul>
+                <li>Exclusive discounts on products</li>
+                <li>Free delivery on all orders</li>
+                <li>Priority customer support</li>
+            </ul>
+            <button id="subscribe-button" data-id="monthly-200">Subscribe Now</button>
+        </div>
+    </div>
+
+
+    
+    <!-- Mobile Bottom Navbar -->
+    <nav class="bottom-navbar" id="mobilenav">
+        <a href="/index.html" class="nav-item">
+            <span class="material-icons">home</span>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="/mainApplication/Productspages/p1.html" class="nav-item">
+            <span class="material-icons">shopping_cart</span>
+            <span class="nav-text">Products</span>
+        </a>
+        <a href="/mainApplication/CartPages/cart.html" class="nav-item">
+            <span class="material-icons">shopping_cart</span>
+            <span class="nav-text">Cart</span>
+        </a>
+        <a href="/mainApplication/ProfilePage/profile.html" class="nav-item">
+            <span class="material-icons">person</span>
+            <span class="nav-text">Profile</span>
+        </a>
+    </nav>
+
+
+    <footer>
+        <p>&copy; 2024 Dayneeds</p>
+        <ul>
+            <li><a href="/Documents/termsConditions.html">Terms & Policy</a></li>
+            <li><a href="/Documents/privacyPolicy.html">Privacy Policy</a></li>
+            <li><a href="/Documents/refundPolicy.html">Refund Policy</a></li>
+            <li><a href="/Documents/shippingDeliveryPolicy.html">Shipping and Delivery Policy</a></li>
+            <li><a href="/Documents/cancellationPolicy.html">Cancellation Policy</a></li>
+        </ul>
+    </footer>
+
+    
+    <script src="scripts.js"></script>
+
+    <script>
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+        const ScrollingText = document.getElementById('ScrollingText');
+        ScrollingText.innerHTML = 'Hi '+ UserInfo.name+ " Welcome to Dayneeds";
+       
+        
+    </script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+    import { getFirestore, doc,collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+    import { getDatabase, ref, set,get,onValue } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
+    import { getStorage,listAll, getDownloadURL , ref as sRef } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-storage.js";
+    import { getAuth, createUserWithEmailAndPassword,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCO6VsEBILvh_PoTXyC0_soOXP2XcLyYBE",
+      authDomain: "usersform-16326.firebaseapp.com",
+      databaseURL: "https://usersform-16326-default-rtdb.firebaseio.com",
+      projectId: "usersform-16326",
+      storageBucket: "usersform-16326.appspot.com",
+      messagingSenderId: "1022738618925",
+      appId: "1:1022738618925:web:41cd05df76212b20e1b6a4",
+      measurementId: "G-J7ECPXGQ8P"
+    };
+
+// Import Firebase functionalities
+const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase
+const db = getDatabase();
+// Retrieve user ID from session storage
+const userId = JSON.parse(sessionStorage.getItem("user-creds")).uid;
+
+// Reference to the user's data in the database
+const userRef = ref(db, `UsersAuthList/${userId}/subscription`);
+console.log(userId)
+// Function to display user data
+function displayUserData(userData) {
+    const userDataDiv = document.getElementById('offers');
+    
+}
+const productItems =   document.querySelector('.product-item');
+
+// Fetch all data under the user's UID
+onValue(userRef, (snapshot) => {
+            const userData= snapshot.val();
+            console.log(userData.benefits.discount)
+            if (userData.status == "active") {
+            const UserMembership = document.getElementById('ScrollingText');
+            UserMembership.style.color = 'red';
+            UserMembership.innerHTML = '"Hello, Prime Member!  Enjoy Your Exclusive Benefits."'
+             
+             const OfferscrollingText = "Enjoy "+userData.benefits.discount+" in this Products  We're Improving Your Experience – Our Website is Under Development. offer will apply in the cart please proceed";
+             const OffferBody = document.getElementById('scrollingtext');
+             OffferBody.style.color = 'red';
+             OffferBody.innerHTML = OfferscrollingText;
+
+             document.getElementById('subscribe-banner').style.display ='none'
+            } else {
+            
+            }
+        }, (error) => {
+            console.error("Error fetching data:", error);
+        });
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!-- address.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Address</title>
+  <link rel="stylesheet" href="/mainApplication/RALpages/address.css">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
+</head>
+<body>
+  <header>
+    <h1>Grocery Store</h1>
+    <nav>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/mainApplication/Productspages/p1.html">Products</a></li>
+            <li><a href="/mainApplication/CartPages/cart.html">Cart</a></li>
+            <li><a href="/mainApplication/ProfilePage/profile.html">Profile</a></li>
+        </ul>
+    </nav>
+</header>
+  <main id="cart-main">
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+            
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Cart items will be populated here -->
+            </tbody>
+        </table>
+        <div class="cart-summary">
+            <h2 style="font-size: 20px;" id="totalPrice">Total Price: <span id="total-price">0 Rs</span></h2>
+        </div>
+    </div>
+</main>
+
+  <div class="container">
+    <div class="sub-container">
+      <lottie-player src="https://lottie.host/14144004-cb99-40fb-9c18-16c92b98e39c/aJ7GYX9ENz.json" background="##FFFFFF" speed="1" style="width: 50px; height: 50px;" loop autoplay direction="1" mode="normal"></lottie-player>
+    <h1>Select Address</h1>
+    </div>
+    <div id="addressList">
+      <h2>Address</h2>
+      <div class="details" id="addressDetails">
+     
+        <p><strong>House No:</strong> <span id="houseNo">123</span></p>
+        <p><strong>Street:</strong> <span id="street">Example Street</span></p>
+        <p><strong>Nearby:</strong> <span id="nearby">Near Park</span></p>
+        <p><strong>City/Town:</strong> <span id="city">Metropolis</span></p>
+        <p><strong>District:</strong> <span id="district">Metro District</span></p>
+        <p><strong>Pincode:</strong> <span id="pincode">123456</span></p>
+      </div>
+      <p>To View Selected Products <span id="show-product-details">Click here</span></p>
+    </div>
+    <button id="addNewAddressBtn">Change Address</button>
+    <button id="placeorder" >Proceed to payment</button>
+  </div>
+
+  <!-- Add New Address Modal -->
+  <div id="addAddressModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close">&times;</span>
+      <h2>Add New Address</h2>
+      <form id="addAddressForm">
+        <label for="houseNoInput">House No:</label>
+        <input type="text" id="houseNoInput" required>
+        
+        <label for="streetInput">Street:</label>
+        <input type="text" id="streetInput" required>
+
+        <label for="nearbyInput">Nearby:</label>
+        <input type="text" id="nearbyInput">
+        
+        <label for="cityInput">City/Town:</label>
+        <input type="text" id="cityInput" required>
+        
+        <label for="districtInput">District:</label>
+        <input type="text" id="districtInput" required>
+
+        <label for="pincodeInput">Pincode:</label>
+        <input type="text" id="pincodeInput" required>
+
+        <button type="submit" id="submit">Save Address</button>
+      </form>
+    </div>
+  </div>
+
+ <div id="powerloading" class="hidden">
+  <div id="loading">
+    <lottie-player id="lottie" src="https://lottie.host/2a319acd-1fe5-427b-8ea8-003e03b60828/n32vrCawaR.json" background="##fff" speed="1" style="width: 200px; height: 200px" loop autoplay direction="1" mode="normal"></lottie-player>
+  </div>
+ </div>
+
+  <div id="popup" class="popup">
+    <div class="popup-content">
+        <h2>Order Placed!</h2>
+        <p>Thank you for your order. We are processing it and will notify you once it's ready.</p>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+</div>
+
+<footer>
+  <div class="navigation">
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/mainApplication/Productspages/p1.html">Products</a></li>
+          <li><a href="/mainApplication/CartPages/cart.html">Cart</a></li>
+          <li><a href="/mainApplication/ProfilePage/profile.html">Profile</a></li>
+        </ul>
+  </div>
+  <audio id="successSound" src="/audiofiles/zomato_sms.mp3" preload="auto"></audio>
+  <p>&copy; 2024 Dayneeds</p>
+  <ul>
+      <li><a href="/Documents/termsConditions.html">Terms & Policy</a></li>
+      <li><a href="/Documents/privacyPolicy.html">Privacy Policy</a></li>
+      <li><a href="/Documents/refundPolicy.html">Refund Policy</a></li>
+      <li><a href="/Documents/shippingDeliveryPolicy.html">Shipping and Delivery Policy</a></li>
+      <li><a href="/Documents/cancellationPolicy.html">Cancellation Policy</a></li>
+  </ul>
+</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+  
+<script>
+  const Cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+  const cartItems = document.getElementById('cart-items');
+  const totalprice = document.getElementById('total-price');
+  totalprice.innerHTML = localStorage.getItem('totalPrice')
+  cartItems.innerHTML = '';
+  Cart.forEach(element => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+              <td><img src="${element.image}" alt="${element.name}" width="50"></td>
+              <td>${element.name}</td>
+              <td>${element.quantity} grams</td>
+              <td>${element.cost} Rs</td>`;
+              cartItems.appendChild(row);
+              
+  });
+
+
+</script>
+
+
+ <script>
+  const showProductDetails = document.getElementById('show-product-details');
+  showProductDetails.addEventListener('click',function(){
+   const cartmain = document.getElementById('cart-main');
+   if (cartmain.style.display === 'none'){
+    cartmain.style.display = 'block';
+   }
+   else{
+    cartmain.style.display = 'none';
+   }
+  })
+ </script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "i-Ns5sCDP78_EwXBR",
+      });
+   })();
+</script>
+
+ <script>
+ let name,quantity,cost;
+
+
+ function showPopup() {
+        document.getElementById('powerloading').style.display = 'flex';
+         setTimeout(function(){
+          document.getElementById('popup').style.display = 'flex';
+          var sound = document.getElementById('successSound');
+          sound.play();
+          this.reset()
+         },3000)
+         
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            window.location.href = '/index.html';
+        }
+
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+  let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+ 
+  document.getElementById('placeorder').addEventListener('click',function(){
+    event.preventDefault();
+   
+   
+    const userEmail = UserCreds.email;
+    console.log(userEmail)
+        // const ccEmail = userEmail; // Add the CC email address here
+
+        const templateParamsUser = {
+            to_name: "Customer",  // Customer name
+            to_email: userEmail,  // Customer email
+            products: Cart.map(p => 
+        `${p.name} | Quantity: ${p.quantity} grams | Price: ₹${p.cost}`
+    ).join("-----------"),
+            total_price: totalprice.innerHTML,
+           total_price: totalprice.innerHTML,
+            houseNo:houseNO.innerHTML,
+            street:street.innerHTML,
+            nearby:nearby.innerHTML,
+            city:city.innerHTML,
+            district:district.innerHTML,
+            pincode:pincode.innerHTML,
+            year: new Date().getFullYear(),
+            
+        };
+  
+        const templateParamsAdmin = {
+            to_name: "UserName",  // Admin name
+            to_email: userEmail,  // Admin email
+            products: Cart.map(p => 
+        `${p.name} | Quantity: ${p.quantity} grams | Price: ₹${p.cost}`
+    ).join("---------"),
+            total_price: totalprice.innerHTML,
+            houseNo:houseNO.innerHTML,
+            street:street.innerHTML,
+            nearby:nearby.innerHTML,
+            city:city.innerHTML,
+            district:district.innerHTML,
+            pincode:pincode.innerHTML,
+            customer_email: userEmail,
+            year: new Date().getFullYear(),
+        };
+  
+
+        
+        // Send confirmation email to user
+        emailjs.send('service_xyvqbe6', 'template_gth9yxp', templateParamsUser)
+            .then(response => {
+                console.log('Order confirmation email sent to user!', response.status, response.text);
+                
+            }, error => {
+                console.log('Failed to send email to user...', error);
+            });
+
+
+
+        //      // Send email to admin for delivery processing
+        emailjs.send('service_xyvqbe6', 'template_yo68oge', templateParamsAdmin)
+        .then(response => {
+            console.log('Order details sent to admin!', response.status, response.text);
+        }, error => {
+            console.log('Failed to send email to admin...', error);
+        });
+
+ 
+      showPopup();
+
+
+  })
+  const houseNO = document.getElementById('houseNo');
+  const street = document.getElementById('street');
+  const nearby = document.getElementById('nearby');
+  const city = document.getElementById('city');
+  const district = document.getElementById('district');
+  const pincode = document.getElementById('pincode');
+
+
+
+  houseNO.innerText = UserInfo.house;
+  
+  street.innerText = UserInfo.street;
+  
+  nearby.innerText = UserInfo.nearby;
+  
+  city.innerText = UserInfo.city;
+  
+  district.innerText = UserInfo.district;
+  
+  pincode.innerText = UserInfo.pincode;
+  
+
+
+  const addnewAdd = document.getElementById('addNewAddressBtn').addEventListener('click',function(){
+   const addAddressModal = document.getElementById('addAddressModal').style.display = 'flex'
+  })
+  const closemodel = document.getElementById('close');
+  closemodel.addEventListener('click',function(){
+    document.getElementById('addAddressModal').style.display = 'none'
+  })
+const changeAddessBtn = document.getElementById('submit');
+changeAddessBtn.addEventListener('click',function(e){
+  e.preventDefault();
+  const HNO = document.getElementById('houseNoInput');
+  const Street = document.getElementById('streetInput');
+  const NearBY = document.getElementById('nearbyInput');
+  const City= document.getElementById('cityInput');
+  const District= document.getElementById('districtInput');
+  const Pincode= document.getElementById('pincodeInput');
+
+
+  houseNO.innerHTML = HNO.value;
+  street.innerHTML =Street.value;
+  nearby.innerHTML=NearBY.value;
+  city.innerHTML=City.value;
+  district.innerHTML=District.value;
+  pincode.innerHTML = Pincode.value;
+
+  alert("Details saved Successfully! close window")
+})
+
+ </script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .cart-container {
+      width: 90%;
+      margin: 20px auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table th, table td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    .total {
+      text-align: right;
+      margin-top: 20px;
+    }
+    .continue-btn {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="cart-container">
+    <h1>Your Cart</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items">
+        <!-- Products will be dynamically added here -->
+      </tbody>
+    </table>
+    <div class="total">
+      <h3>Total Price: <span id="total-price">0</span> Rs</h3>
+    </div>
+    <a href="#" class="continue-btn" id="continue-btn">Continue to Payment</a>
+  </div>
+
+  <script>
+    const cart = [
+      { name: 'Apple', quantity: 2, price: 100, total_price: 200 },
+      { name: 'Banana', quantity: 3, price: 50, total_price: 150 }
+    ];
+    const totalPrice = cart.reduce((acc, item) => acc + item.total_price, 0);
+
+    const cartItemsContainer = document.getElementById('cart-items');
+    const totalPriceElement = document.getElementById('total-price');
+
+    // Load cart items into the table
+    cart.forEach(item => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${item.name}</td>
+        <td>${item.quantity}</td>
+        <td>${item.price} Rs</td>
+        <td>${item.total_price} Rs</td>
+      `;
+      cartItemsContainer.appendChild(row);
+    });
+
+    // Display the total price
+    totalPriceElement.innerText = totalPrice;
+
+    // Handle redirect to address.html with product details and total price
+    document.getElementById('continue-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      const queryParams = encodeURIComponent(JSON.stringify(cart));
+      window.location.href = `address.html?products=${queryParams}&totalPrice=${totalPrice}`;
+    });
+  </script>
+</body>
+</html>

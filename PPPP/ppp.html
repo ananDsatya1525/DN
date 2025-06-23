@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Page</title>
+    <link rel="stylesheet" href="ppp.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vegetables</h1>
+   <!-- Search bar -->
+   <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Search for products..." oninput="searchProducts()">
+</div>
+       
+
+        <!-- Vegetables Section -->
+        <div class="category" id="vegetables">
+            <h2>Vegetables / కూరగాయలు</h2>
+            <div class="product-wrapper">
+                <button class="nav-button prev" onclick="scrollProducts('vegetables', -1)">&#9664;</button>
+                <div class="product-container" id="vegetables-container"></div>
+                <button class="nav-button next" onclick="scrollProducts('vegetables', 1)">&#9654;</button>
+            </div>
+            <!-- See More Link -->
+            <div class="see-more">
+                <a href="vegetables.html">See More Vegetables</a>
+            </div>
+        </div>
+
+         <!-- Grocery Section -->
+         <div class="category" id="leafygreens">
+            <h2>Leafy Greens / ఆకుకూరలు </h2>
+            <div class="product-wrapper">
+                <button class="nav-button prev" onclick="scrollProducts('leafygreens', -1)">&#9664;</button>
+                <div class="product-container" id="leafygreens-container"></div>
+                <button class="nav-button next" onclick="scrollProducts('leafygreens', 1)">&#9654;</button>
+            </div>
+            <!-- See More Link -->
+            <div class="see-more">
+                <a href="grocery.html">See More Grocery</a>
+            </div>
+        </div>
+        <div class="category" id="rootVegetables">
+            <h2>Root Vegetables / మూల కూరగాయలు</h2>
+            <div class="product-wrapper">
+                <button class="nav-button prev" onclick="scrollProducts('rootVegetables', -1)">&#9664;</button>
+                <div class="product-container" id="rootVegetables-container"></div>
+                <button class="nav-button next" onclick="scrollProducts('rootVegetables', 1)">&#9654;</button>
+            </div>
+            <!-- See More Link -->
+            <div class="see-more">
+                <a href="grocery.html">See More Grocery</a>
+            </div>
+        </div>
+        <div class="category" id=" cruciferousvegetables">
+            <h2>Cruciferous Vegetables / క్రూసిఫెరస్ కూరగాయలు</h2>
+            <div class="product-wrapper">
+                <button class="nav-button prev" onclick="scrollProducts('cruciferousvegetables', -1)">&#9664;</button>
+                <div class="product-container" id="cruciferousvegetables-container"></div>
+                <button class="nav-button next" onclick="scrollProducts('cruciferousvegetables', 1)">&#9654;</button>
+            </div>
+            <!-- See More Link -->
+            <div class="see-more">
+                <a href="grocery.html">See More Grocery</a>
+            </div>
+        </div>
+        <div class="category" id="legumes">
+            <h2>Legumes </h2>
+            <div class="product-wrapper">
+                <button class="nav-button prev" onclick="scrollProducts('legumes', -1)">&#9664;</button>
+                <div class="product-container" id="legumes-container"></div>
+                <button class="nav-button next" onclick="scrollProducts('legumes', 1)">&#9654;</button>
+            </div>
+            <!-- See More Link -->
+            <div class="see-more">
+                <a href="grocery.html">See More Grocery</a>
+            </div>
+        </div>
+        <div class="category" id="nightshades">
+            <h2>Nightshades</h2>
+            <div class="product-wrapper">
+                <button class="nav-button prev" onclick="scrollProducts('nightshades', -1)">&#9664;</button>
+                <div class="product-container" id="nightshades-container"></div>
+                <button class="nav-button next" onclick="scrollProducts('nightshades', 1)">&#9654;</button>
+            </div>
+            <!-- See More Link -->
+            <div class="see-more">
+                <a href="grocery.html">See More Grocery</a>
+            </div>
+        </div>
+        <div class="category" id="alliums">
+            <h2>Alliums</h2>
+            <div class="product-wrapper">
+                <button class="nav-button prev" onclick="scrollProducts('alliums', -1)">&#9664;</button>
+                <div class="product-container" id="alliums-container"></div>
+                <button class="nav-button next" onclick="scrollProducts('alliums', 1)">&#9654;</button>
+            </div>
+            <!-- See More Link -->
+            <div class="see-more">
+                <a href="grocery.html">See More Grocery</a>
+            </div>
+        </div>
+        <div id="search-results" style="display: none;">
+            <h2>Search Results</h2>
+            <div class="product-container" id="search-results-container"></div>
+        </div>
+    </div>
+
+    <script src="ppp.js"></script>
+</body>
+</html>

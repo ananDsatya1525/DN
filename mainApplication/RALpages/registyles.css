@@ -1,0 +1,467 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* Header */
+header {
+  background-color: #343a40;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+}
+
+header h1 {
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ddd;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+header nav ul li a {
+  color: #fff;
+  padding: 8px 20px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+  background-color: #495057;
+  color: #ddd;
+}
+/* Main Container */
+.container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 40px;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  gap: 40px;
+}
+
+/* Form Section */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Register Form */
+#registerForm {
+  flex: 1;
+}
+
+#registerForm h1 {
+  margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+/* Input Fields */
+input[type="text"], input[type="email"], input[type="password"],input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+/* Input Focus Style */
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Button Styling */
+.btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+/* Button Hover Effect */
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Link Styling */
+p {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* Form Container for Address */
+.modal-content {
+  flex: 1;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid Layout for Address Fields */
+#addAddressForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+#addAddressForm h2 {
+  grid-column: span 2;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+/* Style Each Address Input */
+#addAddressForm label {
+  font-weight: 500;
+  color: #555;
+}
+
+#addAddressForm input[type="text"]{
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+#addAddressForm input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  h1, h2 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    font-size: 15px;
+  }
+
+  input[type="text"], input[type="email"], input[type="password"],input[type="number"]{
+    font-size: 15px;
+  }
+
+  #addAddressForm {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1, h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  input[type="text"], input[type="email"], input[type="password"],input[type="number"]{
+    font-size: 14px;
+    padding: 10px;
+  }
+ 
+  .lottie{
+display: none;
+  }
+  .modal-content >#addAddressForm > label{
+font-size: 16px;
+text-align: center;
+  }
+
+ .modal-content >#addAddressForm > input{
+  align-items: center;
+ }
+}
+@media (min-width:320px) and (max-width:480px){
+
+  header{
+    width: 100%;
+    overflow: hidden;
+  }
+  .modal-content{
+    padding: 0px;
+  }
+  header >h1{
+    font-size: 25px;
+  }
+  header > nav> ul >li a {
+padding: 10px;
+  }
+}
+footer {
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+  width: 100%;
+  margin-top: 50px;
+}
+
+footer p {
+  font-size: 1rem;
+}
+footer > ul{
+  padding: 0px;
+}
+footer >ul >li{
+  list-style: none;
+  margin-top: 5px;
+  padding: 0px;
+}
+footer > ul > li > a{
+  color: #fff;
+  text-decoration: underline;
+  padding: 0px;
+}
+#errorMessage{
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 5px 10px;
+  background-color:blue;
+  border-radius: 5px;
+  z-index: 1000;
+  color: #fff;
+  animation: fadeInOut 3s ease-in-out forwards;
+}
+
+/* Optional fade-in and fade-out effect */
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+button:hover {
+  background-color: #218838;
+}
+
+.loader {
+flex-direction: column;
+justify-content: center;
+align-items: center;top: -100px;
+}
+
+    /* Remove controls in Chrome, Safari, Edge, and Opera */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+/* pop up */
+    #lottie{
+  
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+     
+    }
+    #powerloading{
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(241, 237, 237, 0.505); /* Semi-transparent background */
+      z-index: 1000;
+    }
+    #regloading{
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #fff; /* Semi-transparent background */
+      z-index: 1000;
+    }
+    /* Header */
+header {
+  width: 100%;
+  background-color:#f8f9fa;
+  color: #fff;
+  text-align: center;
+  display: flex; 
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;  
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.263) 0px 5px 15px;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  margin-top: 5px;
+}
+
+header h1 {
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: Oleo Script, system-ui;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 23px;
+  color:#fff;
+  text-align: center;
+  margin-top: 10px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+header nav ul li a {
+  color:#0E0E16;
+  padding: 8px 20px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+  background-color: #218838;
+  color: #fff;
+}
+ /* Add the bottom navbar styles here */
+ .bottom-navbar {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #218838;
+  color: white;
+  border-top: 1px solid #ccc;
+  z-index: 1; /* Ensure the navbar is above other content */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.bottom-navbar .nav-item {
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+.bottom-navbar .nav-item .material-icons {
+  font-size: 24px;
+}
+.bottom-navbar .nav-item .nav-text {
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  .bottom-navbar {
+      display: flex; /* Show only on mobile */
+      height: 50px;
+
+  }
+  footer{
+   margin-bottom: 50px;
+  }
+  nav{
+    display: none;
+  }
+  .bottom-navbar .nav-item .material-icons {
+      font-size: 20px;
+  }
+  .bottom-navbar .nav-item .nav-text {
+      font-size: 10px;
+  }
+  
+ 
+}
+@media (min-width:600px) and (max-width:2000px){
+.bottom-navbar{
+  display: none;
+}
+}

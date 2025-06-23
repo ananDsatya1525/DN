@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual Product Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.language-selector {
+    margin: 20px 0;
+}
+
+main {
+    padding: 20px;
+}
+
+#search-input {
+    padding: 10px;
+    width: 60%;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#product-list {
+    margin-top: 20px;
+}
+
+#products {
+    list-style-type: none;
+    padding: 0;
+}
+
+.product {
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+}
+
+#search-results {
+    margin-top: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="title">Welcome</h1>
+        <div class="language-selector">
+            <label for="language-select">Select Language:</label>
+            <select id="language-select" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="es">Spanish</option>
+                <option value="te">Telugu</option> <!-- Added Telugu -->
+            </select>
+        </div>
+    </header>
+    <main>
+        <input type="text" id="search-input" placeholder="Search..." oninput="searchProducts()">
+        <button onclick="performSearch()">Search</button>
+        <div id="search-results"></div>
+        <div id="product-list">
+            <h2>Products</h2>
+            <ul id="products">
+                <li class="product" data-en="Apple" data-fr="Pomme" data-es="Manzana" data-te="ఆపిల్">Apple</li>
+                <li class="product" data-en="Banana" data-fr="Banane" data-es="Plátano" data-te="అరటిపండు">Banana</li>
+                <li class="product" data-en="Tomato" data-fr="Tomate" data-es="Tomate" data-te="టమోటా">Tomato</li>
+                <li class="product" data-en="Potato" data-fr="Pomme de terre" data-es="Patata" data-te="బంగాళదుంప">Potato</li>
+                <li class="product" data-en="Rice" data-fr="Riz" data-es="Arroz" data-te="బియ్యం">Rice</li>
+                <li class="product" data-en="Milk" data-fr="Lait" data-es="Leche" data-te="పాలు">Milk</li>
+                <!-- Add more products here -->
+            </ul>
+        </div>
+    </main>
+    <script>
+        // script.js
+
+// Store translations
+const translations = {
+    en: {
+        title: "Welcome",
+        searchPlaceholder: "Search...",
+        products: {
+            Apple: "Apple",
+            Banana: "Banana",
+            Tomato: "Tomato",
+            Potato: "Potato",
+            Rice: "Rice",
+            Milk: "Milk"
+        }
+    },
+    fr: {
+        title: "Bienvenue",
+        searchPlaceholder: "Chercher...",
+        products: {
+            Apple: "Pomme",
+            Banana: "Banane",
+            Tomato: "Tomate",
+            Potato: "Pomme de terre",
+            Rice: "Riz",
+            Milk: "Lait"
+        }
+    },
+    es: {
+        title: "Bienvenido",
+        searchPlaceholder: "Buscar...",
+        products: {
+            Apple: "Manzana",
+            Banana: "Plátano",
+            Tomato: "Tomate",
+            Potato: "Patata",
+            Rice: "Arroz",
+            Milk: "Leche"
+        }
+    },
+    te: { // Telugu translations
+        title: "స్వాగతం",
+        searchPlaceholder: "శోధన...",
+        products: {
+            Apple: "ఆపిల్",
+            Banana: "అరటిపండు",
+            Tomato: "టమోటా",
+            Potato: "బంగాళదుంప",
+            Rice: "బియ్యం",
+            Milk: "పాలు"
+        }
+    }
+};
+
+// Change Language
+function changeLanguage() {
+    const selectedLang = document.getElementById('language-select').value;
+    translatePage(selectedLang);
+    translateProducts(selectedLang);
+}
+
+// Translate the Page
+function translatePage(lang) {
+    document.getElementById('title').innerText = translations[lang].title;
+    document.getElementById('search-input').placeholder = translations[lang].searchPlaceholder;
+}
+
+// Translate the Product List
+function translateProducts(lang) {
+    const productElements = document.querySelectorAll('.product');
+    productElements.forEach(product => {
+        const translatedName = product.getAttribute(`data-${lang}`);
+        product.innerText = translatedName;
+    });
+}
+
+// Search Products
+function searchProducts() {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const selectedLang = document.getElementById('language-select').value;
+    const products = document.querySelectorAll('.product');
+    let resultsFound = false;
+
+    products.forEach(product => {
+        const productName = product.getAttribute(`data-${selectedLang}`).toLowerCase();
+        if (productName.includes(query)) {
+            product.style.display = "block";
+            resultsFound = true;
+        } else {
+            product.style.display = "none";
+        }
+    });
+
+    // Display message if no results found
+    if (!resultsFound) {
+        document.getElementById('search-results').innerHTML = `<p>No results found for "${query}"</p>`;
+    } else {
+        document.getElementById('search-results').innerHTML = "";
+    }
+}
+
+// Initialize page with default language
+document.addEventListener('DOMContentLoaded', () => {
+    changeLanguage();
+});
+
+    </script>
+</body>
+</html>

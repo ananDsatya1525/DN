@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="/mainApplication/RALpages/registyles.css">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Protest+Guerrilla&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Protest+Guerrilla&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Protest+Guerrilla&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="brand" style="display: flex;flex-direction: row;justify-content: center;align-items: center; background-color: #218838;padding-left: 30px;padding-right: 30px;border-top-right-radius: 50px;border-bottom-right-radius: 50px;">
+      <img src="/images/bannerslides/icon2.png" alt="" srcset="" style="width: 70px;height: 70px;">
+  <h1>Dayneeds</h1>
+  </div>  
+    <nav>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/mainApplication/Productspages/p1.html">Products</a></li>
+            <li><a href="/mainApplication/CartPages/cart.html">Cart</a></li>
+            <li><a href="/mainApplication/ProfilePage/profile.html">Profile</a></li>
+        </ul>
+    </nav>
+</header>
+  <div class="container">
+    <form id="registerForm">
+      <h1>Register</h1>
+      <label for="registerName">Name</label>
+      <input type="text" id="registerName" name="name" placeholder="Enter your full name" required>
+      <label for="registerEmail">Email</label>
+      <input type="email" id="registerEmail" name="email" placeholder="Enter your email" required>
+      <label for="registerMobile">Mobile Number</label>
+      <input type="number" id="registerMobile" name="mobile" placeholder="Enter your mobile number" required>
+      <label for="registerPassword">Password</label>
+      <input type="password" id="registerPassword" name="password" placeholder="Enter your password" required>
+      <div id="checkBox">
+        <input type="checkbox" id="agree" name="agree" required>
+        <label for="agree">
+            I agree to the <a href="#terms" target="_blank">Terms and Conditions</a> and <a href="#privacy" target="_blank">Privacy Policy</a>.
+        </label> 
+      </div>
+
+      <div id="powerloading" class="hidden">
+        <div id="loading">
+          <lottie-player id="lottie" src="https://lottie.host/2a319acd-1fe5-427b-8ea8-003e03b60828/n32vrCawaR.json" background="##fff" speed="1" style="width: 200px; height: 200px" loop autoplay direction="1" mode="normal"></lottie-player>
+        </div>
+       </div>
+    </form>
+   <div id="regloading">
+    <div id="loading">
+      <lottie-player src="https://lottie.host/4acc665d-d8d9-40b3-84d3-2a57c20fd358/RJvyDNrf76.json" background="##FFFFFF" speed="1" style="width: 300px; height: 300px" loop  autoplay direction="1" mode="normal"></lottie-player>
+
+    </div>
+   </div>
+    <div class="modal-content">
+      <form id="addAddressForm">
+        <h2>Add Address</h2>
+        <label for="houseNoInput">House No:</label>
+        <input type="text" id="houseNoInput" required>
+        
+        <label for="streetInput">Street:</label>
+        <input type="text" id="streetInput" required>
+
+        <label for="nearbyInput">Nearby:</label>
+        <input type="text" id="nearbyInput">
+        
+        <label for="cityInput">City/Town:</label>
+        <input type="text" id="cityInput" required>
+        
+        <label for="districtInput">District:</label>
+        <input type="text" id="districtInput" required>
+
+        <label for="pincodeInput">Pincode:</label>
+        <input type="number" id="pincodeInput" required>
+      </form>
+      <button type="submit" id="submit" class="btn">Create Account</button>
+      <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+    <!-- <div id="success-message" class="success-message" style="display: none;">
+        Account created successfully! Redirecting to login page...
+    </div> -->
+  </div>
+
+
+<!-- Custom Pop-up Error Message -->
+<div id="errorPopup" class="error-popup">
+  <p id="errorMessage"></p>
+</div>
+
+ <!-- Mobile Bottom Navbar -->
+ <nav class="bottom-navbar" id="mobilenav">
+  <a href="/index.html" class="nav-item">
+      <span class="material-icons">home</span>
+      <span class="nav-text">Home</span>
+  </a>
+  <a href="/mainApplication/Productspages/p1.html" class="nav-item">
+      <span class="material-icons">shopping_cart</span>
+      <span class="nav-text">Products</span>
+  </a>
+  <a href="/mainApplication/CartPages/cart.html" class="nav-item">
+      <span class="material-icons">shopping_cart</span>
+      <span class="nav-text">Cart</span>
+  </a>
+  <a href="/mainApplication/ProfilePage/profile.html" class="nav-item">
+      <span class="material-icons">person</span>
+      <span class="nav-text">Profile</span>
+  </a>
+</nav>
+  <footer>
+    <p>&copy; 2024 Dayneeds</p>
+    <ul>
+        <li><a href="/Documents/termsConditions.html">Terms & Policy</a></li>
+        <li><a href="/Documents/privacyPolicy.html">Privacy Policy</a></li>
+        <li><a href="/Documents/refundPolicy.html">Refund Policy</a></li>
+        <li><a href="/Documents/shippingDeliveryPolicy.html">Shipping and Delivery Policy</a></li>
+        <li><a href="/Documents/cancellationPolicy.html">Cancellation Policy</a></li>
+    </ul>
+</footer>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  
+  
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCO6VsEBILvh_PoTXyC0_soOXP2XcLyYBE",
+      authDomain: "usersform-16326.firebaseapp.com",
+      databaseURL: "https://usersform-16326-default-rtdb.firebaseio.com",
+      projectId: "usersform-16326",
+      storageBucket: "usersform-16326.appspot.com",
+      messagingSenderId: "1022738618925",
+      appId: "1:1022738618925:web:41cd05df76212b20e1b6a4",
+      measurementId: "G-J7ECPXGQ8P"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const auth = getAuth(app);
+
+    const name = document.getElementById('registerName');
+    const email = document.getElementById('registerEmail');
+    const mobile = document.getElementById('registerMobile');
+    const password = document.getElementById('registerPassword');
+    const housenumber = document.getElementById('houseNoInput');
+    const street = document.getElementById('streetInput');
+    const nearby = document.getElementById('nearbyInput');
+    const city = document.getElementById('cityInput');
+    const district = document.getElementById('districtInput');
+    const pincode = document.getElementById('pincodeInput');
+    const agree = document.getElementById('agree');
+
+
+    const mainform = document.getElementById('submit');
+
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Password validation: at least 8 characters, with 1 uppercase, 1 lowercase, 1 number, and 1 special character
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
+    function showErrorPopup(message) {
+    document.getElementById('errorMessage').innerText = message;
+    errorMessage.style.display = 'flex';
+
+    // Hide the popup after 3 seconds
+    setTimeout(() => {
+        errorMessage.style.display = 'none';
+    }, 3000);
+  }
+
+    const registerUser = evt => {
+      evt.preventDefault();
+
+      // Validate name
+      if (!name.value) {
+        showErrorPopup('Please Enter Your name')
+        return;
+      }
+
+      // Validate email format
+      if (!email.value) {
+        showErrorPopup('Email is Mandatory')
+        return;
+      } else if (!emailRegex.test(email.value)) {
+        showErrorPopup("Invalid email format")
+        return;
+      }
+
+      // Validate mobile
+      if (!mobile.value) {
+        showErrorPopup("Mobile number is mandatory")
+        return;
+      }
+
+      // Validate password format
+      if (!password.value) {
+        showErrorPopup("Password is mandatory")
+        return;
+      } else if (!passwordRegex.test(password.value)) {
+        showErrorPopup("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.");
+        return;
+      }
+
+      // Validate address fields
+      if (!housenumber.value) {
+        showErrorPopup("House number is mandatory");
+        return;
+      }
+      if (!street.value) {
+        showErrorPopup("Street is mandatory");
+        return;
+      }
+      if (!city.value) {
+        showErrorPopup("City is mandatory");
+        return;
+      }
+      if (!district.value) {
+        showErrorPopup("District is mandatory");
+        return;
+      }
+      if (!pincode.value) {
+        showErrorPopup("Pincode is mandatory");
+        return;
+      }
+      if(!agree.checked){
+        showErrorPopup("please accept Terms and conditions and Privacy policy");
+        return;
+      }
+
+      if(pincode.value == 518563){
+        document.getElementById('powerloading').style.display = 'flex';
+        // Proceed to create the user and store data
+      createUserWithEmailAndPassword(auth, email.value, password.value)
+      
+        .then((userCredentials) => {
+          set(ref(db, 'UsersAuthList/' + userCredentials.user.uid), {
+            name: name.value.trim(),
+            mobile: mobile.value.trim(),
+            email: email.value.trim(),
+            House: housenumber.value.trim(),
+            Street: street.value.trim(),
+            Nearby: nearby.value.trim(),
+            City: city.value.trim(),
+            District: district.value.trim(),
+            Pincode: pincode.value.trim(),
+          })
+          
+          .then(() => {
+            // Simulate account creation delay (e.g., backend processing)
+         
+            setTimeout(function(){
+              document.getElementById('powerloading').style.display = 'none';
+              document.getElementById('regloading').style.display = 'flex'
+              setTimeout(function () {
+                document.getElementById('regloading').style.display = 'none'
+                 window.location.href = '/mainApplication/RALpages/login.html';
+                }, 3200);
+            },3000)
+                // Hide loader and show success message
+               
+              // Redirect to login page after 2 seconds
+           
+              // Simulate a delay of 3 seconds for account creation
+          })
+          .catch((error) => {
+            showErrorPopup("An error occured");
+            document.getElementById('powerloading').style.display = 'none';
+          });
+        })
+        .catch((error) => {
+          showErrorPopup("Email is alredy existed ");
+          document.getElementById('powerloading').style.display = 'none';
+        });
+      }
+      else{
+        showErrorPopup('Delivery not available at this location!')
+      }
+    };
+
+ 
+ 
+
+    mainform.addEventListener('click', registerUser);
+  </script>
+</body>
+</html>

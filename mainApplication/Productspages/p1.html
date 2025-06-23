@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link rel="stylesheet" href="p1.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Protest+Guerrilla&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Protest+Guerrilla&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Protest+Guerrilla&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+  <header class="header">
+    <div class="brand" style="display: flex;flex-direction: row;justify-content: center;align-items: center; background-color: #218838;padding-left: 30px;padding-right: 30px;border-top-right-radius: 50px;border-bottom-right-radius: 50px;">
+        <img src="/images/bannerslides/icon2.png" alt="" srcset="" style="width: 70px;height: 70px;">
+    <h1>Dayneeds</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/mainApplication/Productspages/p1.html">Products</a></li>
+            <li><a href="/mainApplication/CartPages/cart.html">Cart</a></li>
+            <li><a href="/LogsRegsHome/profile.html">Profile</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="slideshow-container" style="margin-top: 10px;">
+
+    <div class="mySlides fade" style="background-image: url('/images/bannerslides/califlo.jpg');width: 100%;height: 500px;background-size:cover;background-repeat: no-repeat;background-position: center;">
+        <div class="shade" style="width: 100%;height: 100%;">
+            <div class="matter" style="background-color: rgba(0, 0, 0, 0.500)">
+                <h1>Fresh Leafy Vegs at your doorstep</h1>
+                <p>Shop fresh, locally sourced Leafy vegetables at DAYNEEDS. Our selection includes crisp greens, root veggies, and more, all delivered straight to your door for the best taste and quality in every meal</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mySlides fade" style="background-image: url('/images/bannerslides/frontview.jpg');width: 100%;height: 500px;background-size:cover;background-repeat: no-repeat;background-position: center;">
+        <!-- <img src="/banner2.jpg" style="width:100%"> -->
+        <div class="shade" style="width: 100%;height: 100%;">
+            <div class="matter" style="background-color: rgba(0, 0, 0, 0.500)">
+                <h1>Fresh Groceries at your doorstep</h1>
+                <p>Shop fresh, locally sourced Groceries and Vegies at DAYNEEDS. Our selection includes crisp greens, root veggies, and more, all delivered straight to your door for the best taste and quality in every meal</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mySlides fade" style="background-image: url('/images/bannerslides/tomatocuc.jpg');width: 100%;height: 500px;background-size:cover;background-repeat: no-repeat;background-position: center;">
+        <!-- <img src="/banner3.jpg" style="width:100%"> -->
+        <div class="shade" style="width: 100%;height: 100%;">
+            <div class="matter" style="background-color: rgba(0, 0, 0, 0.500)">
+                <h1>Fresh Vegetables at your doorstep</h1>
+                <p>Shop fresh, locally sourced vegetables at DAYNEEDS. Our selection includes crisp greens, root veggies, and more, all delivered straight to your door for the best taste and quality in every meal</p>
+            </div>
+        </div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+    
+<div class="navigators" style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+<video id="bannerVideo" src="/videos/Dayneeds Market.mp4" autoplay loop></video>
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div class="close">
+                <p>x</p>
+            </div>
+            <h2>Categories</h2> 
+            <ul>
+                <li onclick="filterProducts('all')">All</li>
+                <li onclick="filterProducts('fruits')">Fruits</li>
+                <li onclick="filterProducts('vegetables')">Vegetables</li>
+                <li onclick="filterProducts('cool-drinks')">Cool Drinks</li>
+                <li onclick="filterProducts('grocery')">Grocery</li>
+            </ul>
+            
+        </aside>
+        <main class="main-content" id="mainContent">
+            <header>
+              <div class="close">
+                <button class="toggle-menu" id="toggle" >☰</button>
+              </div>
+                <input type="text" id="searchBar" onkeyup="searchProducts()" placeholder="Search products...">
+                <h2 id="allproducts" style="text-align: center; margin-top: 10px;  font-family: Ubuntu, sans-serif;
+                font-weight: 400;
+                font-style: normal; color: #218838;">all products</h2>
+            </header>
+           <div class="cat">
+            <ul>
+                <li onclick="filterProducts('all')">All</li>
+                <li onclick="filterProducts('fruits')">Fruits</li>
+                <li onclick="filterProducts('vegetables')">Vegetables</li>
+                <li onclick="filterProducts('cool-drinks')">Cool Drinks</li>
+                <li onclick="filterProducts('grocery')">Grocery</li>
+            </ul>
+           </div>
+            <div class="product-grid" id="productGrid">
+
+                <!-- Product cards will be injected here by JavaScript -->
+            </div>
+            <div class="pagination">
+                <button onclick="prevPage()">Prev</button>
+                <button onclick="nextPage()">Next</button>
+            </div>
+            <div id="noResults" class="no-results" style="display: none;">Oops! Product not found</div>
+        </main>
+    </div>
+        <!-- Mobile Bottom Navbar -->
+        <nav class="bottom-navbar" id="mobilenav">
+            <a href="/index.html" class="nav-item">
+                <span class="material-icons">home</span>
+                <span class="nav-text">Home</span>
+            </a>
+            <a href="/mainApplication/Productspages/p1.html" class="nav-item">
+                <span class="material-icons">shopping_cart</span>
+                <span class="nav-text">Products</span>
+            </a>
+            <a href="/mainApplication/CartPages/cart.html" class="nav-item">
+                <span class="material-icons">shopping_cart</span>
+                <span class="nav-text">Cart</span>
+            </a>
+            <a href="/mainApplication/ProfilePage/profile.html" class="nav-item">
+                <span class="material-icons">person</span>
+                <span class="nav-text">Profile</span>
+            </a>
+        </nav>
+     
+    <footer>
+        <p>&copy; 2024 Dayneeds</p>
+        <ul>
+            <li><a href="/Documents/termsConditions.html">Terms & Policy</a></li>
+            <li><a href="/Documents/privacyPolicy.html">Privacy Policy</a></li>
+            <li><a href="/Documents/refundPolicy.html">Refund Policy</a></li>
+            <li><a href="/Documents/shippingDeliveryPolicy.html">Shipping and Delivery Policy</a></li>
+            <li><a href="/Documents/cancellationPolicy.html">Cancellation Policy</a></li>
+        </ul>
+    </footer>
+
+   
+    <script src="p1.js"></script>
+</body>
+</html>

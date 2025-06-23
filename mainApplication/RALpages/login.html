@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/mainApplication/RALpages/login.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Protest+Guerrilla&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Protest+Guerrilla&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Protest+Guerrilla&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="brand" style="display: flex;flex-direction: row;justify-content: center;align-items: center; background-color: #218838;padding-left: 30px;padding-right: 30px;border-top-right-radius: 50px;border-bottom-right-radius: 50px;">
+      <img src="/images/bannerslides/icon2.png" alt="" srcset="" style="width: 70px;height: 70px;">
+  <h1>Dayneeds</h1>
+  </div>
+    <nav>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/mainApplication/Productspages/p1.html">Products</a></li>
+            <li><a href="/mainApplication/CartPages/cart.html">Cart</a></li>
+            <li><a href="/mainApplication/ProfilePage/profile.html">Profile</a></li>
+        </ul>
+    </nav>
+</header>
+  <div class="container">
+    <h1>Login</h1>
+    <!-- <lottie-player src="https://lottie.host/c3176bb4-b75e-4e73-8b58-a60b0a621161/5lic0nJoby.json" background="##FFFFFF" speed="1" style="width: 100px; height: 100px;" loop  autoplay direction="1" mode="normal"></lottie-player> -->
+    <form id="loginForm">
+      <label for="loginMobileEmail">Mobile Number or Email</label>
+      <input type="text" id="loginMobileEmail" name="mobileEmail" placeholder="Enter your mobile number or email" required>
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+      <p><a href="#" id="forgotpassword">Forgot password?</a></p>
+      <button type="submit" id="login" class="btn">Login</button>
+      <p>Don't have an account? <a href="registration.html">Create Account</a></p>
+    </form>
+  </div>
+
+  <div id="errorPopup" class="error-popup">
+    <p id="errorMessage"></p>
+  </div>
+   <!-- Mobile Bottom Navbar -->
+   <nav class="bottom-navbar" id="mobilenav">
+    <a href="/index.html" class="nav-item">
+        <span class="material-icons">home</span>
+        <span class="nav-text">Home</span>
+    </a>
+    <a href="/mainApplication/Productspages/p1.html" class="nav-item">
+        <span class="material-icons">shopping_cart</span>
+        <span class="nav-text">Products</span>
+    </a>
+    <a href="/mainApplication/CartPages/cart.html" class="nav-item">
+        <span class="material-icons">shopping_cart</span>
+        <span class="nav-text">Cart</span>
+    </a>
+    <a href="/mainApplication/ProfilePage/profile.html" class="nav-item">
+        <span class="material-icons">person</span>
+        <span class="nav-text">Profile</span>
+    </a>
+</nav>
+  <footer>
+    <p>&copy; 2024 Dayneeds</p>
+    <ul>
+        <li><a href="/Documents/termsConditions.html">Terms & Policy</a></li>
+        <li><a href="/Documents/privacyPolicy.html">Privacy Policy</a></li>
+        <li><a href="/Documents/refundPolicy.html">Refund Policy</a></li>
+        <li><a href="/Documents/shippingDeliveryPolicy.html">Shipping and Delivery Policy</a></li>
+        <li><a href="/Documents/cancellationPolicy.html">Cancellation Policy</a></li>
+    </ul>
+</footer>
+
+<div id="playload">
+   <img src="/icons8-unlock.gif" alt="loader">
+   <p style="color: black;">Please wait....</p>
+
+</div>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script type="module">
+     
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+  import { getDatabase,ref,set,get,child} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-analytics.js";
+  import { getAuth,signInWithEmailAndPassword ,sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCO6VsEBILvh_PoTXyC0_soOXP2XcLyYBE",
+    authDomain: "usersform-16326.firebaseapp.com",
+    databaseURL: "https://usersform-16326-default-rtdb.firebaseio.com",
+    projectId: "usersform-16326",
+    storageBucket: "usersform-16326.appspot.com",
+    messagingSenderId: "1022738618925",
+    appId: "1:1022738618925:web:41cd05df76212b20e1b6a4",
+    measurementId: "G-J7ECPXGQ8P"
+  };
+
+  // Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db =  getDatabase();
+const auth = getAuth(app)
+const dbref = ref(db)
+
+
+const mobileEmail = document.getElementById('loginMobileEmail');
+const password = document.getElementById('loginPassword');
+let login = document.getElementById('login');
+const forgotpassword = document.getElementById('forgotpassword')
+
+function showErrorPopup(message) {
+    document.getElementById('errorMessage').innerText = message;
+    errorMessage.style.display = 'flex';
+
+    // Hide the popup after 3 seconds
+    setTimeout(() => {
+        errorMessage.style.display = 'none';
+    }, 3000);
+  }
+
+let signInUser= evt => {
+  document.getElementById('playload').style.display = 'flex';
+  evt.preventDefault();
+ signInWithEmailAndPassword(auth,mobileEmail.value.trim(),password.value)
+  .then((userCredentials)=>{
+    get(child(dbref,'UsersAuthList/' + userCredentials.user.uid)).then((snapshot)=>{
+      if(snapshot.exists){
+        sessionStorage.setItem('user-info',JSON.stringify({
+          name:snapshot.val().name,
+          email:snapshot.val().email,
+          mobile:snapshot.val().mobile,
+          house:snapshot.val().House,
+          nearby:snapshot.val().Nearby,
+          street:snapshot.val().Street,
+          city:snapshot.val().City,
+          district:snapshot.val().District,
+          pincode:snapshot.val().Pincode,
+
+          
+        
+        }))
+        
+        sessionStorage.setItem("user-creds",JSON.stringify(userCredentials.user));
+        setTimeout(function(){
+          document.getElementById('playload').style.display = 'none ';
+         onLoginSuccess();
+        },2000)
+      
+      }
+    })
+   
+  })
+  .catch((error)=>{
+    document.getElementById('playload').style.display = 'none ';
+    showErrorPopup('invalid credentials')
+  
+    // alert(error.message);
+    // console.log(error.code);
+    // console.log(error.message);
+  })
+}
+const forgotPassword =()=>{
+  sendPasswordResetEmail(auth,mobileEmail.value).then(()=>{
+   showErrorPopup('Password reset link has been sent to your Email')
+  })
+  .catch((error)=>{
+    if(error.code){
+     showErrorPopup('Please Enter Email')
+    }
+    console.log(error.code )
+    console.log(error.message)
+  })
+}
+// if(!mobileEmail.value){
+//   alert('Email please')
+// }
+// else{
+//   forgotpassword.addEventListener('click',forgotPassword)
+// }
+forgotpassword.addEventListener('click',forgotPassword)
+login.addEventListener('click',signInUser);
+
+function onLoginSuccess() {
+        const redirectTo = localStorage.getItem('redirectTo');
+        
+        if (redirectTo === 'payment') {
+            // Redirect to payment page after login
+            localStorage.removeItem('redirectTo'); // Clear the flag
+            window.location.href = '/payments/payments.html';
+        } else {
+            // Default redirection
+            window.location.href = '/index.html';
+        }
+    }
+</script>
+</body>
+</html>

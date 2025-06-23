@@ -1,0 +1,26 @@
+{
+  "name": "Dayneeds Shop",
+  "short_name": "Dayneeds",
+  "description": "A shop that provides all your daily needs including fruits, vegetables, and groceries.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "serviceworker": {
+    "src": "/service-worker.js",
+    "scope": "/",
+    "type": "classic"
+  }
+}

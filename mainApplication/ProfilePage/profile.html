@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="/mainApplication/ProfilePage/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Protest+Guerrilla&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Protest+Guerrilla&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Protest+Guerrilla&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="brand" style="display: flex;flex-direction: row;justify-content: center;align-items: center; background-color: #218838;padding-left: 30px;padding-right: 30px;border-top-right-radius: 50px;border-bottom-right-radius: 50px;">
+      <img src="/icon2.png" alt="" srcset="" style="width: 70px;height: 70px;">
+  <h1>Dayneeds</h1>
+  </div>
+    <nav>
+        <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/mainApplication/Productspages/p1.html">Products</a></li>
+            <li><a href="/mainApplication/CartPages/cart.html">Cart</a></li>
+            <li><a href="/mainApplication/ProfilePage/profile.html">Profile</a></li>
+        </ul>
+    </nav>
+</header>
+  <div class="profile-container">
+    <div id="profileContent">
+      <!-- Content displayed when the user is logged in -->
+      <div class="profile-details">
+        <h1 style="  font-family: Ubuntu, sans-serif;
+        font-weight: 400;
+        font-style: normal;">Your Profile</h1>
+
+        <div class="section personal-details">
+          <h2>Personal Details</h2>
+          <div class="details">
+            <p><strong>Name:</strong> <span id="userName">John Doe</span></p>
+            <p><strong>Email:</strong> <span id="userEmail">johndoe@example.com</span></p>
+            <p><strong>Mobile Number:</strong> <span id="userMobile">9876543210</span></p>
+          </div>
+        </div>
+
+        <div class="section address-details">
+          <h2>Address</h2>
+          <div class="details" id="addressDetails">
+            <p><strong>House No:</strong> <span id="houseNo">123</span></p>
+            <p><strong>Street:</strong> <span id="street">Example Street</span></p>
+            <p><strong>Nearby:</strong> <span id="nearby">Near Park</span></p>
+            <p><strong>City/Town:</strong> <span id="city">Metropolis</span></p>
+            <p><strong>District:</strong> <span id="district">Metro District</span></p>
+            <p><strong>Pincode:</strong> <span id="pincode">123456</span></p>
+          </div>
+          <button class="btn" id="updateAddressBtn">Update Address</button>
+        </div>
+        <div class="subscriptionDetails">
+       <ul>
+        <li >Plan : <span id="plan"></span></li>
+        <li >Plan Ammount : <span id="paymentAmount"></span></li>
+        <li >Date Subscribed : <span id="dateSubscribed"></span></li>
+        <li >Status : <span id="status"></span></li>
+       </ul>
+        </div>
+        <div class="section order-history">
+          <h2>Order History</h2>
+          <div class="details">
+            <ul>
+              <li>Order #001 - Delivered on 15th Aug 2024</li>
+              <li>Order #002 - In Transit - Estimated Delivery: 18th Aug 2024</li>
+              <li>Order #003 - Cancelled</li>
+            </ul>
+          </div>
+        </div>
+
+        <button class="btn logout-btn" id="logoutBtn">Logout</button>
+      </div>
+
+      <!-- Content displayed when the user is not logged in -->
+      <div id="loginPrompt" style="display: none;">
+        <h1>Please Log In</h1>
+        <button class="btn login-btn" id="loginBtn">Login</button>
+      </div>
+    </div>
+    </div>
+     <!-- Mobile Bottom Navbar -->
+     <nav class="bottom-navbar" id="mobilenav">
+      <a href="/index.html" class="nav-item">
+          <span class="material-icons">home</span>
+          <span class="nav-text">Home</span>
+      </a>
+      <a href="/mainApplication/Productspages/p1.html" class="nav-item">
+          <span class="material-icons">shopping_cart</span>
+          <span class="nav-text">Products</span>
+      </a>
+      <a href="/mainApplication/CartPages/cart.html" class="nav-item">
+          <span class="material-icons">shopping_cart</span>
+          <span class="nav-text">Cart</span>
+      </a>
+      <a href="/mainApplication/ProfilePage/profile.html" class="nav-item">
+          <span class="material-icons">person</span>
+          <span class="nav-text">Profile</span>
+      </a>
+  </nav>
+
+    <footer>
+      <p>&copy; 2024 Grocery Store</p>
+      <ul>
+          <li><a href="/Documents/termsConditions.html">Terms & Policy</a></li>
+          <li><a href="/Documents/privacyPolicy.html">Privacy Policy</a></li>
+          <li><a href="/Documents/refundPolicy.html">Refund Policy</a></li>
+          <li><a href="/Documents/shippingDeliveryPolicy.html">Shipping and Delivery Policy</a></li>
+          <li><a href="/Documents/cancellationPolicy.html">Cancellation Policy</a></li>
+      </ul>
+  </footer>
+<!-- 
+    Modal for Updating Address -->
+    <!-- <div id="updateAddressModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="close">&times;</span>
+        <h2>Update Address</h2>
+        <form id="updateAddressForm">
+          <label for="email">Email:</label>
+          <input type="text" id="emailInput" placeholder="Enter your email" required>
+          <label for="houseNo">House No:</label>
+          <input type="text" id="houseNoInput" placeholder="Enter your house number" required>
+          <label for="street">Street:</label>
+          <input type="text" id="streetInput" placeholder="Enter your street" required>
+          <label for="nearby">Nearby:</label>
+          <input type="text" id="nearbyInput" placeholder="Enter nearby landmark" required>
+          <label for="city">City/Town:</label>
+          <input type="text" id="cityInput" placeholder="Enter your city/town" required>
+          <label for="district">District:</label>
+          <input type="text" id="districtInput" placeholder="Enter your district" required>
+          <label for="state">state:</label>
+          <input type="text" id="stateInput" placeholder="Enter your state" required>
+          <label for="pincode">Pincode:</label>
+          <input type="text" id="pincodeInput" placeholder="Enter your pincode" required>
+          <button type="submit" id="saveaddress" class="btn">Save Address</button>
+        </form>
+      </div>
+    </div>
+  </div> -->
+
+<script type="module">
+  let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+  let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+console.log(UserInfo)
+        const Name = document.getElementById('userName');
+        const Email = document.getElementById('userEmail');
+        const Mobile = document.getElementById('userMobile');
+        const House = document.getElementById('houseNo');
+        const Street = document.getElementById('street')
+        const Nearby = document.getElementById('nearby');
+        const City = document.getElementById('city')
+        const District =document.getElementById('district')
+        const Pincode = document.getElementById('pincode')
+        const logoutbtn = document.getElementById('logoutBtn');
+        const updateAddress = document.getElementById('updateAddressBtn');
+        
+  
+
+      
+        let logOut = ()=>{
+          sessionStorage.removeItem("user-creds");
+          sessionStorage.removeItem("user-info")
+          window.location.href = '/index.html'
+        }
+
+        let checkCred = ()=>{
+          if(!sessionStorage.getItem("user-creds"))
+              window.location.href = '/mainApplication/RALpages/login.html'
+
+              else{
+            Name.innerText = `${UserInfo.name}`;
+            Email.innerText = `${UserCreds.email}`;
+            Mobile.innerText = `${UserInfo.mobile}`;
+            Nearby.innerText = `${UserInfo.nearby}`;
+            Street.innerText = `${UserInfo.street}`;
+            House.innerText = `${UserInfo.house}`;
+            City.innerText = `${UserInfo.city}`;
+            Pincode.innerText = `${UserInfo.pincode}`;
+            District.innerText = `${UserInfo.district}`;
+  
+        }
+      }
+    
+        window.addEventListener('load',checkCred);
+        logoutbtn.addEventListener('click',logOut)
+
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+    import { getFirestore, doc,collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+    import { getDatabase, ref, set,get,onValue } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-database.js";
+    import { getStorage,listAll, getDownloadURL , ref as sRef } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-storage.js";
+    import { getAuth, createUserWithEmailAndPassword,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCO6VsEBILvh_PoTXyC0_soOXP2XcLyYBE",
+      authDomain: "usersform-16326.firebaseapp.com",
+      databaseURL: "https://usersform-16326-default-rtdb.firebaseio.com",
+      projectId: "usersform-16326",
+      storageBucket: "usersform-16326.appspot.com",
+      messagingSenderId: "1022738618925",
+      appId: "1:1022738618925:web:41cd05df76212b20e1b6a4",
+      measurementId: "G-J7ECPXGQ8P"
+    };
+
+// Import Firebase functionalities
+const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase
+const db = getDatabase();
+// Retrieve user ID from session storage
+const userId = JSON.parse(sessionStorage.getItem("user-creds")).uid;
+
+// Reference to the user's data in the database
+const userRef = ref(db, `UsersAuthList/${userId}/subscription`);
+console.log(userId)
+
+
+
+
+// Fetch all data under the user's UID
+onValue(userRef, (snapshot) => {
+            const userData= snapshot.val();
+            console.log(userData)
+            if (userData.status == "active") {
+            document.getElementById('plan').innerHTML = userData.plan;
+            document.getElementById('paymentAmount').innerHTML = userData.paymentAmount +" rs"
+            const date  = new Date(userData.dateSubscribed);
+            const formattedDate = date.toLocaleString(); 
+            document.getElementById('dateSubscribed').innerHTML = formattedDate;
+            document.getElementById('status').innerHTML = userData.status
+            } else {
+            
+            }
+        }, (error) => {
+            console.error("Error fetching data:", error);
+        });
+    
+ 
+</script>
+
+</body>
+</html>

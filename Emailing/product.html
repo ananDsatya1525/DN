@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .product-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            width: calc(33.333% - 40px);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .product-card button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product-card button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Products</h1>
+<div class="product-container">
+    <div class="product-card" data-id="1" data-name="Apple" data-price="50">
+        <img src="apple.jpg" alt="Apple">
+        <h3>Apple</h3>
+        <p>Price: 50 Rs</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product-card" data-id="2" data-name="Banana" data-price="30">
+        <img src="banana.jpg" alt="Banana">
+        <h3>Banana</h3>
+        <p>Price: 30 Rs</p>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <!-- Add more products here -->
+</div>
+
+<script>
+    let cart = [];
+
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function() {
+            const productCard = this.parentElement;
+            const product = {
+                id: productCard.dataset.id,
+                name: productCard.dataset.name,
+                price: parseInt(productCard.dataset.price),
+                quantity: 1,
+            };
+
+            const existingProduct = cart.find(p => p.id === product.id);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push(product);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product.name} has been added to the cart!`);
+        });
+    });
+</script>
+
+</body>
+</html>
